@@ -1,5 +1,5 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const mongoose = require("./seeders/seed");
 const logger = require("morgan");
 
 const app = express();
