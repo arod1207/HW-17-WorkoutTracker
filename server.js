@@ -27,4 +27,7 @@ app.use("/exercise", express.static("public"));
 
 app.use("/stats", express.static("public"));
 
+const apiRoutes = require("./routes/apiRoutes");
+app.use("/", apiRoutes);
+
 app.listen(PORT, console.log(`Server running on http://localhost:${PORT}`));
