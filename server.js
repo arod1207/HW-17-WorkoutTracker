@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const logger = require("morgan");
-const path = require("path");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -23,11 +22,7 @@ app.use(logger("dev"));
 
 app.use(express.static("public"));
 
-app.use("/exercise", express.static("public"));
-
-app.use("/stats", express.static("public"));
-
-const apiRoutes = require("./routes/apiRoutes");
-app.use("/", apiRoutes);
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
 
 app.listen(PORT, console.log(`Server running on http://localhost:${PORT}`));
