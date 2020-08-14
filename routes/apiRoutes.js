@@ -4,6 +4,7 @@ module.exports = function (app) {
   app.get("/api/workouts", function (req, res) {
     Workout.find()
       .then((data) => {
+        console.log(data);
         res.json(data);
       })
       .catch((err) => {
@@ -11,12 +12,15 @@ module.exports = function (app) {
       });
   });
 
-  app.post("/api/workouts", function (req, res) {
-    Workout.create({})
-      .then((data) => res.json(data))
-      .catch((err) => {
-        res.json(err);
-      });
+  app.post("/api/workouts", (req, res) => {
+    Workout.create(req.body, (error, data) => {
+      if (error) {
+        res.send(error);
+      } else {
+        console.log(data);
+        res.json(data);
+      }
+    });
   });
 
   app.get("/api/workouts/range", function (req, res) {
@@ -29,12 +33,15 @@ module.exports = function (app) {
       });
   });
 
-  app.post("/api/workouts/range", function (req, res) {
-    Workout.create({})
-      .then((data) => res.json(data))
-      .catch((err) => {
-        res.json(err);
-      });
+  app.post("/api/workouts/range", (req, res) => {
+    Workout.create(req.body, (error, data) => {
+      if (error) {
+        res.send(error);
+      } else {
+        console.log(data);
+        res.json(data);
+      }
+    });
   });
 
   app.put("/api/workouts/:id", ({ body, params }, res) => {
