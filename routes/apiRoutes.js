@@ -2,7 +2,7 @@ const Workout = require("../models/workout");
 
 module.exports = function (app) {
   app.get("/api/workouts", function (req, res) {
-    Workout.find({})
+    Workout.find()
       .then((data) => {
         console.log(data);
         res.json(data);
@@ -45,7 +45,9 @@ module.exports = function (app) {
 
   app.put("/api/workouts/:id", ({ body, params }, res) => {
     Workout.findByIdAndUpdate(params.id, { $push: { exercises: body } })
-      .then((data) => res.json(data))
+      .then((data) => {
+        res.json(data);
+      })
       .catch((err) => {
         res.json(err);
       });
