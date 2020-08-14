@@ -2,7 +2,7 @@ const Workout = require("../models/workout");
 
 module.exports = function (app) {
   app.get("/api/workouts", function (req, res) {
-    Workout.find()
+    Workout.find({})
       .then((data) => {
         console.log(data);
         res.json(data);
@@ -12,16 +12,16 @@ module.exports = function (app) {
       });
   });
 
-  app.post("/api/workouts", (req, res) => {
-    Workout.create(req.body, (error, data) => {
-      if (error) {
-        res.send(error);
-      } else {
-        console.log(data);
-        res.json(data);
-      }
-    });
-  });
+  // app.post("/api/workouts", ({ body }, res) => {
+  //   Workout.create({ $push: { exercises: body } })
+  //     .then((data) => {
+  //       console.log(data);
+  //       res.json(data);
+  //     })
+  //     .catch((err) => {
+  //       res.status(400).json(err);
+  //     });
+  // });
 
   app.get("/api/workouts/range", function (req, res) {
     Workout.find()
@@ -42,17 +42,5 @@ module.exports = function (app) {
         res.json(data);
       }
     });
-  });
-
-  app.put("/api/workouts/:id", ({ body, params }, res) => {
-    Workout.findByIdAndUpdate(
-      params.id,
-      { $push: { exercises: body } },
-      { new: true, runValidators: true }
-    )
-      .then((data) => res.json(data))
-      .catch((err) => {
-        res.json(err);
-      });
   });
 };
