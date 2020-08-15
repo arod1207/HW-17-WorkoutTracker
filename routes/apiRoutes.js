@@ -50,13 +50,4 @@ module.exports = function (app) {
         res.json(err);
       });
   });
-
-  // app.put("/api/workouts/:id", function (req, res) {
-  //   Workout.updateOne(
-  //     { _id: req.params.id },
-  //     { exercises: req.body.exercises }
-  //   ).then(function (data) {
-  //     res.json(data);
-  //   });
-  // });
 };
