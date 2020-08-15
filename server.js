@@ -8,11 +8,15 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
-mongoose.connect("mongodb://localhost/workout", {
+const MONGODB_URI = process.env.MONGODB_URL || "mongodb://localhost/workout";
+
+const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
-});
+};
+
+mongoose.connect(MONGODB_URI, options);
 
 const db = mongoose.connection;
 
