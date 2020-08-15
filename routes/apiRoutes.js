@@ -4,7 +4,6 @@ module.exports = function (app) {
   app.get("/api/workouts", function (req, res) {
     Workout.find()
       .then((data) => {
-        console.log(data);
         res.json(data);
       })
       .catch((err) => {
@@ -15,7 +14,6 @@ module.exports = function (app) {
   app.post("/api/workouts", ({ body }, res) => {
     Workout.create({ $push: { exercises: body } })
       .then((data) => {
-        console.log(data);
         res.json(data);
       })
       .catch((err) => {
@@ -52,4 +50,13 @@ module.exports = function (app) {
         res.json(err);
       });
   });
+
+  // app.put("/api/workouts/:id", function (req, res) {
+  //   Workout.updateOne(
+  //     { _id: req.params.id },
+  //     { exercises: req.body.exercises }
+  //   ).then(function (data) {
+  //     res.json(data);
+  //   });
+  // });
 };
