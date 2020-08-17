@@ -12,7 +12,7 @@ module.exports = function (app) {
   });
 
   app.post("/api/workouts", ({ body }, res) => {
-    Workout.create({ $push: { exercises: body } })
+    Workout.create(body)
       .then((data) => {
         res.json(data);
       })
