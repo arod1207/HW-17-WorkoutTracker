@@ -16,7 +16,10 @@ const options = {
   useUnifiedTopology: true,
 };
 
-mongoose.connect(MONGODB_URI, options);
+mongoose.connect(
+  "mongodb+srv://admin:@Password1@workoutdb.f6k5l.mongodb.net/WorkouDB?retryWrites=true&w=majority",
+  options
+);
 
 const db = mongoose.connection;
 
