@@ -12,7 +12,6 @@ const MONGODB_URI = process.env.MONGODB_URL || "mongodb://localhost/workout";
 
 const options = {
   useNewUrlParser: true,
-  useCreateIndex: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
 };
