@@ -8,15 +8,15 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
-const MONGODB_URI = process.env.MONGODB_URL || "mongodb://localhost/workout";
+const MONGODB_URI =
+  process.env.MONGODB_URL ||
+  "mongodb://admin:@Password1@ds035702.mlab.com:35702/heroku_w1tg78h0";
 
-const options = {
+mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
-};
-
-mongoose.connect(MONGODB_URI, options);
+});
 
 const db = mongoose.connection;
 
