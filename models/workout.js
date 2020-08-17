@@ -32,6 +32,10 @@ const workoutSchema = new Schema({
         type: Number,
         required: "Enter number of sets...",
       },
+      distance: {
+        type: Number,
+        default: 0,
+      },
     },
   ],
   totalDuration: {
