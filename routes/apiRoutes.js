@@ -38,10 +38,14 @@ module.exports = function (app) {
   });
 
   app.put("/api/workouts/:id", ({ body, params }, res) => {
-    Workout.findByIdAndUpdate(params.id, { $push: { exercises: body } })
+    Workout.findByIdAndUpdate(
+      params.id,
+      { $push: { exercises: body } },
+      { new: true, runValidators: true }
+    )
       .then((data) => res.json(data))
-      .catch((error) => {
-        res.json(error);
+      .catch((err) => {
+        res.json(err);
       });
   });
 };
