@@ -14,7 +14,7 @@ app.use(express.static("public"));
 
 const MONGODB_URI =
   process.env.MONGODB_URI ||
-  "mongodb://Devtest:@Password1@ds151059.mlab.com:51059/heroku_kzkvkp";
+  "mongodb://heroku_1zp8fxcd:nt7vsjepohhgtf1g7gu0gff1p1@ds249787.mlab.com:49787/heroku_1zp8fxcd";
 
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
