@@ -14,6 +14,10 @@ app.use(express.static("public"));
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/workout";
 
+const db = mongoose.connection;
+
+db.once("open", () => console.log("Connected to Database"));
+
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
